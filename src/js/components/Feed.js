@@ -11,22 +11,33 @@ var Feed = React.createClass({
 	getInitialState: function () {
 		return {
 			items: [],
-			many: 0
+			many: this.props.many,
+			scrollBottom: false
 		};
 	},
-	fetchJSON: function (limit=0) {
+	fetchJSON: function () {
 		let many = `?limit=${(this.props.many)}`;
 		$.getJSON(url + many)
 			.done((e) => {
 				if (this.isMounted()) {
 					this.setState({
-						items: e.data.children
+						items: e.data.children,
+						many: this.props.many,
+						scrollBottom: false
 					});
 				}
 			});
 
 	},
+	handleScroll: function () {
+		let scrollToButtom = $(window).scrollTop() + $(window).height() === $(document).height();
+		if (scrollToButtom) {
+			this.props.many += 5;
+			this.fetchJSON();
+		}
+	},
 	componentDidMount: function () {
+		$(window).on('scroll', this.handleScroll);
 		this.fetchJSON(this.props.many);
 	},
 	render: function () {

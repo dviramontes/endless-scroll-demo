@@ -2,3 +2,24 @@ body {
   background-size: contain;
   background: "#EEEEEE";
 }
+
+img {
+  display: block;
+  float: left;
+  width: 50vw;
+  height: 32vh;
+  object-fit: cover;
+}
+
+.effect {
+  display: block;
+  overflow: hidden;
+  -webkit-filter: blur(4px) grayscale(50%);
+  filter: blur(5px) grayscale(50%);
+  -webkit-filter: contrast(2);
+  filter: contrast(2);
+  left: 100%; /* move the whole width of the image to the right */
+  //margin-left: -100%; /* magic! */
+  z-index: 1;
+  top: 0;
+}

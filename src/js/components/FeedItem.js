@@ -2,21 +2,16 @@ import React from 'react';
 
 var FeedItem = React.createClass({
 	render: function () {
-		//let img = this.props.imgurl !== null ? true : false;
 		return (
-			<li className="list-group-item">
-				<div className="container">
-					<div className="row">
-						<div className="col-lg-12">
-							<h4>
-								<a href={this.props.link}>{this.props.title}</a>
-							</h4>
-						</div>
-					</div>
-					<div className="row">
-						<div className="col-lg-12">
-							<img className="text-center"src={this.props.imgurl}/>
-							<p>
+			<div className="container">
+				<div className="row">
+					<div className="col-sm-12 col-md-12">
+						<div className="thumbnail">
+							<img className="effect" src={this.props.imgurl ? this.props.imgurl : "https://b.thumbs.redditmedia.com/hk0MZr7rnkM15h6V8bm7M12Q50XEva85QxKhOIe1bNI.png" }/>
+							<div className="caption">
+								<h3>
+									<a href={this.props.link}>{this.props.title}</a>
+								</h3>
 								<span className="text-center">
 									<button className="btn btn-success" type="button">
 										<span id="up" className="btn btn-sm btn-success">&uarr;</span>
@@ -25,11 +20,11 @@ var FeedItem = React.createClass({
 										<span id="down" className="btn btn-sm btn-success">&darr;</span>
 									</button>
 								</span>
-							</p>
+							</div>
 						</div>
 					</div>
 				</div>
-			</li>
+			</div>
 		);
 	}
 });

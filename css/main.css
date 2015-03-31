@@ -1,15 +1,13 @@
 body {
   background-size: contain;
-  background: "#EEEEEE";
-}
+  background: "#EEEEEE"; }
 
 img {
   display: block;
   float: left;
   width: 50vw;
   height: 32vh;
-  object-fit: cover;
-}
+  object-fit: cover; }
 
 .effect {
   display: block;
@@ -18,8 +16,9 @@ img {
   filter: blur(5px) grayscale(50%);
   -webkit-filter: contrast(2);
   filter: contrast(2);
-  left: 100%; /* move the whole width of the image to the right */
-  //margin-left: -100%; /* magic! */
+  left: 100%;
+  /* move the whole width of the image to the right */
   z-index: 1;
-  top: 0;
-}
+  top: 0; }
+
+/*# sourceMappingURL=main.css.map */

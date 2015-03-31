@@ -17,7 +17,6 @@ img {
   -webkit-filter: contrast(2);
   filter: contrast(2);
   left: 100%;
-  /* move the whole width of the image to the right */
   z-index: 1;
   top: 0; }
 

@@ -3,10 +3,20 @@
 
 import React from 'react';
 import Feed from '../build/js/components/Feed';
+import ReactTestUtils from 'react/lib/ReactTestUtils';
+import jsdom from 'jsdom';
 
-describe('A test suite', function() {
-
-  it('should fail', function() {
-    expect(Feed).to.not.be.undefined;
-  });
+describe('Feed suite', function() {
+	it('should be defined', function() {
+		expect(Feed).to.be.defined;
+    });
+	xit('should have 5 items at load time', function () {
+		//expect(Feed)
+	})
+	it('should have 10 items at scroll time', function(){
+		 // scroll the window
+		//var node = React.findDOMNode(this.refs.Feed);
+		console.log(this.refs.Feed)
+		ReactTestUtils.Simulate.scroll(Feed, 400);
+	})
 });

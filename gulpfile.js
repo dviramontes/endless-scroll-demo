@@ -84,7 +84,7 @@ gulp.task('serve', ['browser-sync', 'jsx', 'sass'] , function(cb) {
 });
 
 // Delete build Directory
-gulp.task('delete-build', function() {
+gulp.task('clean', function() {
   rimraf('./build', function(err) {
     plugins.util.log(err);
   });

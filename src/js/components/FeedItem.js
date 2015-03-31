@@ -7,7 +7,7 @@ var FeedItem = React.createClass({
 				<div className="row">
 					<div className="col-sm-12 col-md-12">
 						<div className="thumbnail">
-							<img className="effect" src={this.props.imgurl ? this.props.imgurl : "https://b.thumbs.redditmedia.com/hk0MZr7rnkM15h6V8bm7M12Q50XEva85QxKhOIe1bNI.png" }/>
+							<img className="effect" src={this.props.imgurl}/>
 							<div className="caption">
 								<h3>
 									<a href={this.props.link}>{this.props.title}</a>

@@ -21,9 +21,7 @@ var Feed = React.createClass({
 			.done((e) => {
 				if (this.isMounted()) {
 					this.setState({
-						items: e.data.children,
-						many: this.props.many,
-						scrollBottom: false
+						items: e.data.children
 					});
 				}
 			});

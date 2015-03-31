@@ -2,7 +2,11 @@
   "jspm": {
     "dependencies": {
       "bootstrap": "^3.3.1",
+      "chai": "npm:chai@^2.2.0",
+      "chai-as-promised": "github:domenic/chai-as-promised@^4.3.2",
+      "chai-react": "github:percyhanna/chai-react@^2.0.0",
       "jquery": "^2.1.3",
+      "karma-chai-plugins": "npm:karma-chai-plugins@^0.4.0",
       "lodash": "github:lodash/lodash@3.5.0",
       "react": "^0.12.2"
     }

@@ -6,7 +6,7 @@ var rimraf = require('rimraf');
 var browserSync = require('browser-sync');
 var runSequence = require('run-sequence');
 var karma = require('karma').server;
-
+var deploy = require("gulp-gh-pages");
 // DEVELOPMENT TASKS
 //================================================
 
@@ -154,4 +154,9 @@ gulp.task('dist', function() {
     ['css', 'html', 'bundle'],
     'uglify'
   );
+});
+
+gulp.task('deploy', function () {
+	gulp.src("./dist/**/*")
+		.pipe(deploy());
 });

@@ -6,7 +6,6 @@ import _ from 'lodash';
 
 const url = "http://www.reddit.com/rising.json";
 
-
 var Feed = React.createClass({
 	getInitialState: function () {
 		return {

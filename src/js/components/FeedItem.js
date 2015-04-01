@@ -14,10 +14,7 @@ var FeedItem = React.createClass({
 								</h3>
 								<span className="text-center">
 									<button className="btn btn-success" type="button">
-										<span id="up" className="btn btn-sm btn-success">&uarr;</span>
-										votes
-										<span className="badge">{this.props.voteCount}</span>
-										<span id="down" className="btn btn-sm btn-success">&darr;</span>
+										votes <span className="badge"> {this.props.voteCount} </span>
 									</button>
 								</span>
 							</div>

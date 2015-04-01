@@ -80,7 +80,7 @@
       if (depEntry.groupIndex === undefined || depEntry.groupIndex < depGroupIndex) {
         
         // if already in a group, remove from the old group
-        if (depEntry.groupIndex) {
+        if (depEntry.groupIndex !== undefined) {
           groups[depEntry.groupIndex].splice(indexOf.call(groups[depEntry.groupIndex], depEntry), 1);
 
           // if the old group is empty, then we have a mixed depndency cycle
@@ -348,6 +348,7 @@
         },
         global: global 
       });
+      System.set('@empty', System.newModule({}));
       load(main);
     }
   };
@@ -356,10 +357,8 @@
 /* ('mainModule', function(System) {
   System.register(...);
 }); */
+
 ('build/js/main', function(System) {
-
-
-
 
 System.register("npm:process@0.10.1/browser", [], true, function(require, exports, module) {
   var global = System.global,
@@ -370,7 +369,7 @@ System.register("npm:process@0.10.1/browser", [], true, function(require, export
   var draining = false;
   function drainQueue() {
     if (draining) {
-      return;
+      return ;
     }
     draining = true;
     var currentQueue;
@@ -989,7 +988,7 @@ System.register("npm:react@0.12.2/lib/ReactLegacyElement", ["npm:react@0.12.2/li
     var legacyFactoryLogs = {};
     function warnForLegacyFactoryCall() {
       if (!ReactLegacyElementFactory._isLegacyCallWarningEnabled) {
-        return;
+        return ;
       }
       var owner = ReactCurrentOwner.current;
       var name = owner && owner.constructor ? owner.constructor.displayName : '';
@@ -997,7 +996,7 @@ System.register("npm:react@0.12.2/lib/ReactLegacyElement", ["npm:react@0.12.2/li
         name = 'Something';
       }
       if (legacyFactoryLogs.hasOwnProperty(name)) {
-        return;
+        return ;
       }
       legacyFactoryLogs[name] = true;
       ("production" !== process.env.NODE_ENV ? warning(false, name + ' is calling a React component directly. ' + 'Use a factory or JSX instead. See: http://fb.me/react-legacyfactory') : null);
@@ -1028,7 +1027,7 @@ System.register("npm:react@0.12.2/lib/ReactLegacyElement", ["npm:react@0.12.2/li
     }
     function proxyStaticMethods(target, source) {
       if (typeof source !== 'function') {
-        return;
+        return ;
       }
       for (var key in source) {
         if (source.hasOwnProperty(key)) {
@@ -1620,7 +1619,7 @@ System.register("npm:react@0.12.2/lib/EventPluginRegistry", ["npm:react@0.12.2/l
     var namesToPlugins = {};
     function recomputePluginOrdering() {
       if (!EventPluginOrder) {
-        return;
+        return ;
       }
       for (var pluginName in namesToPlugins) {
         var PluginModule = namesToPlugins[pluginName];
@@ -2949,7 +2948,7 @@ System.register("npm:react@0.12.2/lib/ReactPropTypes", ["npm:react@0.12.2/lib/Re
       var propValue = props[propName];
       for (var i = 0; i < expectedValues.length; i++) {
         if (propValue === expectedValues[i]) {
-          return;
+          return ;
         }
       }
       var locationName = ReactPropTypeLocationNames[location];
@@ -2982,7 +2981,7 @@ System.register("npm:react@0.12.2/lib/ReactPropTypes", ["npm:react@0.12.2/lib/Re
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
         if (checker(props, propName, componentName, location) == null) {
-          return;
+          return ;
         }
       }
       var locationName = ReactPropTypeLocationNames[location];
@@ -3126,7 +3125,7 @@ System.register("npm:react@0.12.2/lib/ReactDOMSelect", ["npm:react@0.12.2/lib/Au
   }
   function selectValueType(props, propName, componentName) {
     if (props[propName] == null) {
-      return;
+      return ;
     }
     if (props.multiple) {
       if (!Array.isArray(props[propName])) {
@@ -4015,8 +4014,8 @@ System.register("build/js/components/FeedItem", ["npm:react@0.12.2"], function($
   var React,
       FeedItem;
   return {
-    setters: [function(m) {
-      React = m.default;
+    setters: [function($__m) {
+      React = $__m.default;
     }],
     execute: function() {
       FeedItem = React.createClass({
@@ -4028,13 +4027,7 @@ System.register("build/js/components/FeedItem", ["npm:react@0.12.2"], function($
           }), React.createElement("div", {className: "caption"}, React.createElement("h3", null, React.createElement("a", {href: this.props.link}, this.props.title)), React.createElement("span", {className: "text-center"}, React.createElement("button", {
             className: "btn btn-success",
             type: "button"
-          }, React.createElement("span", {
-            id: "up",
-            className: "btn btn-sm btn-success"
-          }, "↑"), "votes", React.createElement("span", {className: "badge"}, this.props.voteCount), React.createElement("span", {
-            id: "down",
-            className: "btn btn-sm btn-success"
-          }, "↓")))))))));
+          }, "votes ", React.createElement("span", {className: "badge"}, " ", this.props.voteCount, " ")))))))));
         }
       });
       $__export('default', FeedItem);
@@ -6146,11 +6139,11 @@ function define(){};  define.amd = {};
     },
     ready: function(wait) {
       if (wait === true ? --jQuery.readyWait : jQuery.isReady) {
-        return;
+        return ;
       }
       jQuery.isReady = true;
       if (wait !== true && --jQuery.readyWait > 0) {
-        return;
+        return ;
       }
       readyList.resolveWith(document, [jQuery]);
       if (jQuery.fn.triggerHandler) {
@@ -6392,7 +6385,7 @@ function define(){};  define.amd = {};
           if (data !== undefined) {
             return data;
           }
-          return;
+          return ;
         }
         this.each(function() {
           var data = data_user.get(this, camelKey);
@@ -6562,7 +6555,7 @@ function define(){};  define.amd = {};
           origType,
           elemData = data_priv.get(elem);
       if (!elemData) {
-        return;
+        return ;
       }
       if (handler.handler) {
         handleObjIn = handler;
@@ -6639,7 +6632,7 @@ function define(){};  define.amd = {};
           origType,
           elemData = data_priv.hasData(elem) && data_priv.get(elem);
       if (!elemData || !(events = elemData.events)) {
-        return;
+        return ;
       }
       types = (types || "").match(rnotwhite) || [""];
       t = types.length;
@@ -6695,10 +6688,10 @@ function define(){};  define.amd = {};
           namespaces = hasOwn.call(event, "namespace") ? event.namespace.split(".") : [];
       cur = tmp = elem = elem || document;
       if (elem.nodeType === 3 || elem.nodeType === 8) {
-        return;
+        return ;
       }
       if (rfocusMorph.test(type + jQuery.event.triggered)) {
-        return;
+        return ;
       }
       if (type.indexOf(".") >= 0) {
         namespaces = type.split(".");
@@ -6717,7 +6710,7 @@ function define(){};  define.amd = {};
       data = data == null ? [event] : jQuery.makeArray(data, [event]);
       special = jQuery.event.special[type] || {};
       if (!onlyHandlers && special.trigger && special.trigger.apply(elem, data) === false) {
-        return;
+        return ;
       }
       if (!onlyHandlers && !special.noBubble && !jQuery.isWindow(elem)) {
         bubbleType = special.delegateType || type;
@@ -6780,7 +6773,7 @@ function define(){};  define.amd = {};
       args[0] = event;
       event.delegateTarget = this;
       if (special.preDispatch && special.preDispatch.call(this, event) === false) {
-        return;
+        return ;
       }
       handlerQueue = jQuery.event.handlers.call(this, event, handlers);
       i = 0;
@@ -7195,7 +7188,7 @@ function define(){};  define.amd = {};
         udataCur,
         events;
     if (dest.nodeType !== 1) {
-      return;
+      return ;
     }
     if (data_priv.hasData(src)) {
       pdataOld = data_priv.access(src);
@@ -7609,7 +7602,7 @@ function define(){};  define.amd = {};
     return {get: function() {
         if (conditionFn()) {
           delete this.get;
-          return;
+          return ;
         }
         return (this.get = hookFn).apply(this, arguments);
       }};
@@ -7621,7 +7614,7 @@ function define(){};  define.amd = {};
         container = document.createElement("div"),
         div = document.createElement("div");
     if (!div.style) {
-      return;
+      return ;
     }
     div.style.backgroundClip = "content-box";
     div.cloneNode(true).style.backgroundClip = "";
@@ -7814,7 +7807,7 @@ function define(){};  define.amd = {};
     cssProps: {"float": "cssFloat"},
     style: function(elem, name, value, extra) {
       if (!elem || elem.nodeType === 3 || elem.nodeType === 8 || !elem.style) {
-        return;
+        return ;
       }
       var ret,
           type,
@@ -7830,7 +7823,7 @@ function define(){};  define.amd = {};
           type = "number";
         }
         if (value == null || value !== value) {
-          return;
+          return ;
         }
         if (type === "number" && !jQuery.cssNumber[origName]) {
           value += "px";
@@ -8538,7 +8531,7 @@ function define(){};  define.amd = {};
           ret,
           nType = elem.nodeType;
       if (!elem || nType === 3 || nType === 8 || nType === 2) {
-        return;
+        return ;
       }
       if (typeof elem.getAttribute === strundefined) {
         return jQuery.prop(elem, name, value);
@@ -8633,7 +8626,7 @@ function define(){};  define.amd = {};
           notxml,
           nType = elem.nodeType;
       if (!elem || nType === 3 || nType === 8 || nType === 2) {
-        return;
+        return ;
       }
       notxml = nType !== 1 || !jQuery.isXMLDoc(elem);
       if (notxml) {
@@ -8794,13 +8787,13 @@ function define(){};  define.amd = {};
           ret = elem.value;
           return typeof ret === "string" ? ret.replace(rreturn, "") : ret == null ? "" : ret;
         }
-        return;
+        return ;
       }
       isFunction = jQuery.isFunction(value);
       return this.each(function(i) {
         var val;
         if (this.nodeType !== 1) {
-          return;
+          return ;
         }
         if (isFunction) {
           val = value.call(this, i, jQuery(this).val());
@@ -9314,7 +9307,7 @@ function define(){};  define.amd = {};
             modified,
             statusText = nativeStatusText;
         if (state === 2) {
-          return;
+          return ;
         }
         state = 2;
         if (timeoutTimer) {
@@ -9835,7 +9828,7 @@ function define(){};  define.amd = {};
           },
           doc = elem && elem.ownerDocument;
       if (!doc) {
-        return;
+        return ;
       }
       docElem = doc.documentElement;
       if (!jQuery.contains(docElem, elem)) {
@@ -9852,7 +9845,7 @@ function define(){};  define.amd = {};
     },
     position: function() {
       if (!this[0]) {
-        return;
+        return ;
       }
       var offsetParent,
           offset,
@@ -11197,7 +11190,7 @@ function define(){};  define.amd = {};
       while (length--) {
         if (stackA[length] == srcValue) {
           object[key] = stackB[length];
-          return;
+          return ;
         }
       }
       var value = object[key],
@@ -14625,7 +14618,7 @@ System.register("npm:react@0.12.2/lib/ReactUpdates", ["npm:react@0.12.2/lib/Call
       ("production" !== process.env.NODE_ENV ? warning(ReactCurrentOwner.current == null, 'enqueueUpdate(): Render methods should be a pure function of props ' + 'and state; triggering nested component updates from render is not ' + 'allowed. If necessary, trigger nested updates in ' + 'componentDidUpdate.') : null);
       if (!batchingStrategy.isBatchingUpdates) {
         batchingStrategy.batchedUpdates(enqueueUpdate, component, callback);
-        return;
+        return ;
       }
       dirtyComponents.push(component);
       if (callback) {
@@ -14693,14 +14686,14 @@ System.register("npm:react@0.12.2/lib/ReactElementValidator", ["npm:react@0.12.2
     }
     function validateExplicitKey(component, parentType) {
       if (component._store.validated || component.key != null) {
-        return;
+        return ;
       }
       component._store.validated = true;
       warnAndMonitorForKeyUse('react_key_warning', 'Each child in an array should have a unique "key" prop.', component, parentType);
     }
     function validatePropertyKey(name, component, parentType) {
       if (!NUMERIC_PROPERTY_REGEX.test(name)) {
-        return;
+        return ;
       }
       warnAndMonitorForKeyUse('react_numeric_key_warning', 'Child objects should have non-numeric keys so ordering is preserved.', component, parentType);
     }
@@ -14710,7 +14703,7 @@ System.register("npm:react@0.12.2/lib/ReactElementValidator", ["npm:react@0.12.2
       var useName = ownerName || parentName;
       var memoizer = ownerHasKeyUseWarning[warningID];
       if (memoizer.hasOwnProperty(useName)) {
-        return;
+        return ;
       }
       memoizer[useName] = true;
       message += ownerName ? (" Check the render method of " + ownerName + ".") : (" Check the renderComponent call using <" + parentName + ">.");
@@ -14729,7 +14722,7 @@ System.register("npm:react@0.12.2/lib/ReactElementValidator", ["npm:react@0.12.2
     function monitorUseOfObjectMap() {
       var currentName = getCurrentOwnerDisplayName() || '';
       if (ownerHasMonitoredObjectMap.hasOwnProperty(currentName)) {
-        return;
+        return ;
       }
       ownerHasMonitoredObjectMap[currentName] = true;
       monitorCodeUse('react_object_map_children');
@@ -15294,7 +15287,7 @@ System.register("npm:react@0.12.2/lib/ChangeEventPlugin", ["npm:react@0.12.2/lib
     }
     function stopWatchingForChangeEventIE8() {
       if (!activeElement) {
-        return;
+        return ;
       }
       activeElement.detachEvent('onchange', manualDispatchChangeEvent);
       activeElement = null;
@@ -15336,7 +15329,7 @@ System.register("npm:react@0.12.2/lib/ChangeEventPlugin", ["npm:react@0.12.2/lib
     }
     function stopWatchingForValueChange() {
       if (!activeElement) {
-        return;
+        return ;
       }
       delete activeElement.value;
       activeElement.detachEvent('onpropertychange', handlePropertyChange);
@@ -15347,11 +15340,11 @@ System.register("npm:react@0.12.2/lib/ChangeEventPlugin", ["npm:react@0.12.2/lib
     }
     function handlePropertyChange(nativeEvent) {
       if (nativeEvent.propertyName !== 'value') {
-        return;
+        return ;
       }
       var value = nativeEvent.srcElement.value;
       if (value === activeElementValue) {
-        return;
+        return ;
       }
       activeElementValue = value;
       manualDispatchChangeEvent(nativeEvent);
@@ -15501,7 +15494,7 @@ System.register("npm:react@0.12.2/lib/ReactDOMSelection", ["npm:react@0.12.2/lib
   }
   function setModernOffsets(node, offsets) {
     if (!window.getSelection) {
-      return;
+      return ;
     }
     var selection = window.getSelection();
     var length = node[getTextContentAccessor()].length;
@@ -15823,13 +15816,13 @@ System.register("npm:react@0.12.2/lib/LinkedValueUtils", ["npm:react@0.12.2/lib/
       Mixin: {propTypes: {
           value: function(props, propName, componentName) {
             if (!props[propName] || hasReadOnlyValue[props.type] || props.onChange || props.readOnly || props.disabled) {
-              return;
+              return ;
             }
             return new Error('You provided a `value` prop to a form field without an ' + '`onChange` handler. This will render a read-only field. If ' + 'the field should be mutable use `defaultValue`. Otherwise, ' + 'set either `onChange` or `readOnly`.');
           },
           checked: function(props, propName, componentName) {
             if (!props[propName] || props.onChange || props.readOnly || props.disabled) {
-              return;
+              return ;
             }
             return new Error('You provided a `checked` prop to a form field without an ' + '`onChange` handler. This will render a read-only field. If ' + 'the field should be mutable use `defaultChecked`. Otherwise, ' + 'set either `onChange` or `readOnly`.');
           },
@@ -15935,14 +15928,14 @@ System.register("npm:react@0.12.2/lib/ReactEventListener", ["npm:react@0.12.2/li
       trapBubbledEvent: function(topLevelType, handlerBaseName, handle) {
         var element = handle;
         if (!element) {
-          return;
+          return ;
         }
         return EventListener.listen(element, handlerBaseName, ReactEventListener.dispatchEvent.bind(null, topLevelType));
       },
       trapCapturedEvent: function(topLevelType, handlerBaseName, handle) {
         var element = handle;
         if (!element) {
-          return;
+          return ;
         }
         return EventListener.capture(element, handlerBaseName, ReactEventListener.dispatchEvent.bind(null, topLevelType));
       },
@@ -15953,7 +15946,7 @@ System.register("npm:react@0.12.2/lib/ReactEventListener", ["npm:react@0.12.2/li
       },
       dispatchEvent: function(topLevelType, nativeEvent) {
         if (!ReactEventListener._enabled) {
-          return;
+          return ;
         }
         var bookKeeping = TopLevelCallbackBookKeeping.getPooled(topLevelType, nativeEvent);
         try {
@@ -16022,7 +16015,7 @@ System.register("npm:react@0.12.2/lib/SelectEventPlugin", ["npm:react@0.12.2/lib
   }
   function constructSelectEvent(nativeEvent) {
     if (mouseDown || activeElement == null || activeElement != getActiveElement()) {
-      return;
+      return ;
     }
     var currentSelection = getSelection(activeElement);
     if (!lastSelection || !shallowEqual(lastSelection, currentSelection)) {
@@ -16198,10 +16191,10 @@ System.register("build/js/components/FeedList", ["npm:react@0.12.2", "build/js/c
       FeedItem,
       FeedList;
   return {
-    setters: [function(m) {
-      React = m.default;
-    }, function(m) {
-      FeedItem = m.default;
+    setters: [function($__m) {
+      React = $__m.default;
+    }, function($__m) {
+      FeedItem = $__m.default;
     }],
     execute: function() {
       FeedList = React.createClass({
@@ -16446,7 +16439,7 @@ System.register("npm:react@0.12.2/lib/ReactElement", ["npm:react@0.12.2/lib/Reac
         };
         if (useMutationMembrane) {
           Object.freeze(this);
-          return;
+          return ;
         }
       }
       this.props = props;
@@ -16600,7 +16593,7 @@ System.register("npm:react@0.12.2/lib/ReactComponent", ["npm:react@0.12.2/lib/Re
         },
         performUpdateIfNecessary: function(transaction) {
           if (this._pendingElement == null) {
-            return;
+            return ;
           }
           var prevElement = this._currentElement;
           var nextElement = this._pendingElement;
@@ -16771,7 +16764,7 @@ System.register("npm:react@0.12.2/lib/ReactCompositeComponent", ["npm:react@0.12
     }
     function mixSpecIntoComponent(Constructor, spec) {
       if (!spec) {
-        return;
+        return ;
       }
       ("production" !== process.env.NODE_ENV ? invariant(!ReactLegacyElement.isValidFactory(spec), 'ReactCompositeComponent: You\'re attempting to ' + 'use a component class as a mixin. Instead, just use a regular object.') : invariant(!ReactLegacyElement.isValidFactory(spec)));
       ("production" !== process.env.NODE_ENV ? invariant(!ReactElement.isValidElement(spec), 'ReactCompositeComponent: You\'re attempting to ' + 'use a component as a mixin. Instead, just use a regular object.') : invariant(!ReactElement.isValidElement(spec)));
@@ -16825,7 +16818,7 @@ System.register("npm:react@0.12.2/lib/ReactCompositeComponent", ["npm:react@0.12
     }
     function mixStaticSpecIntoComponent(Constructor, statics) {
       if (!statics) {
-        return;
+        return ;
       }
       for (var name in statics) {
         var property = statics[name];
@@ -16986,10 +16979,10 @@ System.register("npm:react@0.12.2/lib/ReactCompositeComponent", ["npm:react@0.12
       performUpdateIfNecessary: function(transaction) {
         var compositeLifeCycleState = this._compositeLifeCycleState;
         if (compositeLifeCycleState === CompositeLifeCycle.MOUNTING || compositeLifeCycleState === CompositeLifeCycle.RECEIVING_PROPS) {
-          return;
+          return ;
         }
         if (this._pendingElement == null && this._pendingState == null && !this._pendingForceUpdate) {
-          return;
+          return ;
         }
         var nextContext = this.context;
         var nextProps = this.props;
@@ -17044,7 +17037,7 @@ System.register("npm:react@0.12.2/lib/ReactCompositeComponent", ["npm:react@0.12
       },
       receiveComponent: function(nextElement, transaction) {
         if (nextElement === this._currentElement && nextElement._owner != null) {
-          return;
+          return ;
         }
         ReactComponent.Mixin.receiveComponent.call(this, nextElement, transaction);
       },
@@ -17201,7 +17194,7 @@ System.register("npm:react@0.12.2/lib/CSSPropertyOperations", ["npm:react@0.12.2
       var warnedStyleNames = {};
       var warnHyphenatedStyleName = function(name) {
         if (warnedStyleNames.hasOwnProperty(name) && warnedStyleNames[name]) {
-          return;
+          return ;
         }
         warnedStyleNames[name] = true;
         ("production" !== process.env.NODE_ENV ? warning(false, 'Unsupported style property ' + name + '. Did you mean ' + camelizeStyleName(name) + '?') : null);
@@ -17563,7 +17556,7 @@ System.register("npm:react@0.12.2/lib/ReactMultiChild", ["npm:react@0.12.2/lib/R
           var nextChildren = flattenChildren(nextNestedChildren);
           var prevChildren = this._renderedChildren;
           if (!nextChildren && !prevChildren) {
-            return;
+            return ;
           }
           var name;
           var lastIndex = 0;
@@ -18469,14 +18462,14 @@ System.register("build/js/components/Feed", ["npm:react@0.12.2", "build/js/compo
       url,
       Feed;
   return {
-    setters: [function(m) {
-      React = m.default;
-    }, function(m) {
-      FeedList = m.default;
-    }, function(m) {
-      $ = m.default;
-    }, function(m) {
-      _ = m.default;
+    setters: [function($__m) {
+      React = $__m.default;
+    }, function($__m) {
+      FeedList = $__m.default;
+    }, function($__m) {
+      $ = $__m.default;
+    }, function($__m) {
+      _ = $__m.default;
     }],
     execute: function() {
       url = "http://www.reddit.com/rising.json";
@@ -18486,23 +18479,47 @@ System.register("build/js/components/Feed", ["npm:react@0.12.2", "build/js/compo
           return {
             items: [],
             many: this.props.many,
-            scrollBottom: false
+            after: "",
+            before: ""
           };
         },
-        fetchJSON: function() {
-          var $__0 = this;
-          var many = ("?limit=" + (this.props.many));
-          $.getJSON(url + many).done((function(e) {
-            if ($__0.isMounted()) {
-              $__0.setState({items: e.data.children});
-            }
-          }));
+        fetchJSON: function(direction) {
+          var limit = ("?limit=" + this.state.many);
+          if (direction === 'after') {
+            var after = this.state.after === "" ? "" : ("&after=" + this.state.after);
+            $.getJSON(url + limit + after).done(function(e) {
+              if (this.isMounted()) {
+                var joined;
+                if (this.state.items.length >= 25) {
+                  joined = _.drop(this.state.items, 5).concat(e.data.children);
+                } else {
+                  joined = this.state.items.concat(e.data.children);
+                }
+                this.setState({
+                  items: joined,
+                  after: e.data.after
+                });
+              }
+            }.bind(this));
+          } else {
+            var before = this.state.before == null ? "" : ("&before=" + this.state.before);
+            $.getJSON(url + limit + before).done(function(e) {
+              if (this.isMounted()) {
+                var joined = e.data.children.concat(this.state.items);
+                this.setState({
+                  items: joined,
+                  before: e.data.after
+                });
+              }
+            }.bind(this));
+          }
         },
         handleScroll: function() {
-          var scrollToButtom = $(window).scrollTop() + $(window).height() === $(document).height();
-          if (scrollToButtom) {
-            this.props.many += 5;
-            this.fetchJSON();
+          console.log(this.state.items.length);
+          if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+            this.fetchJSON('after');
+          } else if ($(window).scrollTop() - $(window).height() === -$(window).height()) {
+            this.fetchJSON('before');
           }
         },
         componentDidMount: function() {
@@ -18925,7 +18942,7 @@ System.register("npm:react@0.12.2/lib/BeforeInputEventPlugin", ["npm:react@0.12.
           case topLevelTypes.topKeyPress:
             var which = nativeEvent.which;
             if (which !== SPACEBAR_CODE) {
-              return;
+              return ;
             }
             hasSpaceKeypress = true;
             chars = SPACEBAR_CHAR;
@@ -18933,11 +18950,11 @@ System.register("npm:react@0.12.2/lib/BeforeInputEventPlugin", ["npm:react@0.12.
           case topLevelTypes.topTextInput:
             chars = nativeEvent.data;
             if (chars === SPACEBAR_CHAR && hasSpaceKeypress) {
-              return;
+              return ;
             }
             break;
           default:
-            return;
+            return ;
         }
       } else {
         switch (topLevelType) {
@@ -18954,12 +18971,12 @@ System.register("npm:react@0.12.2/lib/BeforeInputEventPlugin", ["npm:react@0.12.
             break;
         }
         if (fallbackChars === null) {
-          return;
+          return ;
         }
         chars = fallbackChars;
       }
       if (!chars) {
-        return;
+        return ;
       }
       var event = SyntheticInputEvent.getPooled(eventTypes.beforeInput, topLevelTargetID, nativeEvent);
       event.data = chars;
@@ -19523,7 +19540,7 @@ System.register("npm:react@0.12.2/lib/ReactDOMComponent", ["npm:react@0.12.2/lib
     var ELEMENT_NODE_TYPE = 1;
     function assertValidProps(props) {
       if (!props) {
-        return;
+        return ;
       }
       ("production" !== process.env.NODE_ENV ? invariant(props.children == null || props.dangerouslySetInnerHTML == null, 'Can only set one of `children` or `props.dangerouslySetInnerHTML`.') : invariant(props.children == null || props.dangerouslySetInnerHTML == null));
       if ("production" !== process.env.NODE_ENV) {
@@ -19638,7 +19655,7 @@ System.register("npm:react@0.12.2/lib/ReactDOMComponent", ["npm:react@0.12.2/lib
       },
       receiveComponent: function(nextElement, transaction) {
         if (nextElement === this._currentElement && nextElement._owner != null) {
-          return;
+          return ;
         }
         ReactComponent.Mixin.receiveComponent.call(this, nextElement, transaction);
       },
@@ -19838,7 +19855,7 @@ System.register("npm:react@0.12.2/lib/DOMPropertyOperations", ["npm:react@0.12.2
       var warnedProperties = {};
       var warnUnknownProperty = function(name) {
         if (reactProps.hasOwnProperty(name) && reactProps[name] || warnedProperties.hasOwnProperty(name) && warnedProperties[name]) {
-          return;
+          return ;
         }
         warnedProperties[name] = true;
         var lowerCasedName = name.toLowerCase();
@@ -19950,7 +19967,7 @@ System.register("npm:react@0.12.2/lib/ReactComponentBrowserEnvironment", ["npm:r
         ("production" !== process.env.NODE_ENV ? invariant(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE), 'mountComponentIntoNode(...): Target container is not valid.') : invariant(container && (container.nodeType === ELEMENT_NODE_TYPE || container.nodeType === DOC_NODE_TYPE)));
         if (shouldReuseMarkup) {
           if (ReactMarkupChecksum.canReuseMarkup(markup, getReactRootElementInContainer(container))) {
-            return;
+            return ;
           } else {
             ("production" !== process.env.NODE_ENV ? invariant(container.nodeType !== DOC_NODE_TYPE, 'You\'re trying to render a component to the document using ' + 'server rendering but the checksum was invalid. This usually ' + 'means you rendered a different component type or props on ' + 'the client from the one on the server, or your render() ' + 'methods are impure. React cannot handle this case due to ' + 'cross-browser quirks by rendering at the document root. You ' + 'should look for environment dependent code in your components ' + 'and ensure the props are the same client and server side.') : invariant(container.nodeType !== DOC_NODE_TYPE));
             if ("production" !== process.env.NODE_ENV) {
@@ -20191,10 +20208,10 @@ System.register("build/js/main", ["npm:react@0.12.2", "build/js/components/Feed"
   var React,
       Feed;
   return {
-    setters: [function(m) {
-      React = m.default;
-    }, function(m) {
-      Feed = m.default;
+    setters: [function($__m) {
+      React = $__m.default;
+    }, function($__m) {
+      Feed = $__m.default;
     }],
     execute: function() {
       'use strict';
@@ -20202,7 +20219,6 @@ System.register("build/js/main", ["npm:react@0.12.2", "build/js/components/Feed"
     }
   };
 });
-
 
 
 

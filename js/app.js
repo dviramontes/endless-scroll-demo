@@ -4022,13 +4022,13 @@ System.register("build/js/components/FeedItem", ["npm:react@0.12.2"], function($
       FeedItem = React.createClass({
         displayName: "FeedItem",
         render: function() {
-          return (React.createElement("li", {key: this.props.id}, React.createElement("div", {className: "container-fluid"}, React.createElement("div", {className: "row"}, React.createElement("div", {className: "col-sm-12 col-md-12"}, React.createElement("div", {className: "thumbnail"}, React.createElement("img", {
-            className: "effect image-responsive",
+          return (React.createElement("li", {key: this.props.id}, React.createElement("div", {className: "container"}, React.createElement("div", {className: "row"}, React.createElement("div", {className: "col-sm-12 col-md-12"}, React.createElement("div", {className: "thumbnail"}, React.createElement("img", {
+            className: "effect",
             src: this.props.imgurl
-          }), React.createElement("div", {className: "caption"}, React.createElement("h3", null, React.createElement("a", {href: this.props.link}, this.props.title)), React.createElement("span", {className: "text-center"}, React.createElement("button", {
+          }))), React.createElement("div", {className: "caption"}, React.createElement("h3", null, React.createElement("a", {href: this.props.link}, this.props.title)), React.createElement("button", {
             className: "btn btn-success",
             type: "button"
-          }, "votes", React.createElement("span", {className: "badge"}, this.props.voteCount))))))))));
+          }, "votes", React.createElement("span", {className: "badge"}, " ", this.props.voteCount, " ")))))));
         }
       });
       $__export('default', FeedItem);

@@ -1,1 +1,1 @@
-body{background-size:contain}img{display:block;float:left;width:50vw;height:32vh;object-fit:cover}.effect{display:block;overflow:hidden;-webkit-filter:contrast(2);filter:contrast(2);left:100%;z-index:1;top:0}ul li{list-style-type:none}
+img{display:block;width:100vw;height:32vh;object-fit:cover}.effect{display:block;overflow:hidden;z-index:-1;top:0}ul li{list-style-type:none}.caption{padding:20px;margin:-40px 5% 10%;background-color:#f5f5f5}

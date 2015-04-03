@@ -1,6 +1,5 @@
 body {
-  background-size: contain;
-  background: "#EEEEEE"; }
+  background-size: contain; }
 
 img {
   display: block;
@@ -19,5 +18,8 @@ img {
   left: 100%;
   z-index: 1;
   top: 0; }
+
+ul li {
+  list-style-type: none; }
 
 /*# sourceMappingURL=main.css.map */

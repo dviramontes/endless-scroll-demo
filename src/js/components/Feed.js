@@ -17,7 +17,12 @@ var Feed = React.createClass({
 	},
 	fetch: function (direction) {
 		let limit = `?limit=${this.state.many}`;
-		//let count = `?count=${this.state.items.length}`;
+		if(!_.isEmpty(this.state.items)){
+			let first = _.first(this.state.items).data.id;
+			this.setState({
+				before: first
+			});
+		}
 		if (direction === 'after') {
 			let after = this.state.after === "" ? "" : `&after=${this.state.after}`;
 			$.getJSON(url + limit + after)
@@ -38,19 +43,11 @@ var Feed = React.createClass({
 						let joined = e.data.children.concat(this.state.items);
 						this.setState({
 							items: joined,
-							before: e.data.before,
-							after: e.data.after
+							before: e.data.before
 						});
 					}
 				}.bind(this));
 		}
-		// delete x items if max # of items is reached..
-		//if (this.state.items.length >= 15) {
-		//	console.log(this.state.items);
-		//	joined = _.drop(this.state.items, 5).concat(e.data.children);
-		//} else {
-		//	joined =
-		//}
 	},
 	handleScroll: function () {
 		if ($(window).scrollTop() + $(window).height() === $(document).height()) {
@@ -59,9 +56,11 @@ var Feed = React.createClass({
 			this.fetch('before');
 		}
 	},
+	componentWillMount: function(){
+		this.fetch(this.props.many);
+	},
 	componentDidMount: function () {
 		$(window).on('scroll', this.handleScroll);
-		this.fetch(this.props.many);
 	},
 	shouldComponentUpdate: function(nextProps, nextState){
 		return true;
